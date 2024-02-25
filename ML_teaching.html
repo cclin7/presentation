@@ -7,17 +7,17 @@
 <link href="ML_teaching_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="ML_teaching_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="ML_teaching_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="ML_teaching_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.550">
-
-  <meta name="author" content="Jim Lin">
-  <title>Machine learning ST3189</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/reveal.css">
-  <style>
+<link href="ML_teaching_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+<meta name="author" content="Jim Lin">
+<title>Machine Learning ST3189</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -115,14 +115,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="ML_teaching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="ML_teaching_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="ML_teaching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="ML_teaching_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="ML_teaching_files/libs/revealjs/dist/theme/quarto.css">
+<link href="ML_teaching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="ML_teaching_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="ML_teaching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="ML_teaching_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -320,7 +320,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -412,8 +412,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Machine learning ST3189</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Machine Learning ST3189</h1>
   <p class="subtitle">Lecture N - Clustering</p>
 
 <div class="quarto-title-authors">
@@ -424,136 +423,120 @@ Jim Lin
 </div>
 </div>
 
-</section>
-<section id="ideas-may-include-later" class="slide level2">
-<h2>Ideas (may include later)</h2>
-<ul>
-<li class="fragment">Add one economic examples. fiscal policy or monetary policy regime</li>
-</ul>
-</section>
-<section id="todays-topic-and-outline" class="slide level2">
-<h2>Today’s topic and Outline</h2>
+</section><section id="todays-topic-and-outline" class="slide level2"><h2>Today’s topic and Outline</h2>
+<!-- ## Ideas (may include later)
+-   Add one economic examples. fiscal policy or monetary policy regime 
+-->
 <ul>
 <li class="fragment"><p>Overview on Clustering</p></li>
 <li class="fragment"><p>k-means methods: idea, math, challenges</p></li>
 <li class="fragment"><p>An example using R to implement K-means</p></li>
 <li class="fragment"><p>Reference: See more detailed discussion in <span class="citation" data-cites="james2013introduction bishop2006pattern">(<a href="#/references" role="doc-biblioref" onclick="">James et al. 2013, 112:ch12.4</a>; and <a href="#/references" role="doc-biblioref" onclick="">Bishop 2006, ch9.1</a>)</span></p></li>
-</ul>
-</section>
-<section>
-<section id="introduction---clustering" class="title-slide slide level1 center">
-<h1>Introduction - Clustering</h1>
+</ul></section><section><section id="clustering" class="title-slide slide level1 center"><h1>Clustering</h1>
 
-</section>
-<section id="clustering" class="slide level2">
-<h2>Clustering</h2>
+</section><section id="what-is-clustering" class="slide level2"><h2>What is Clustering</h2>
 <ul>
-<li class="fragment">What is clustering: category our data into several groups sharing similar properties.
+<li class="fragment">Grouping our data into several categories, with each group containing items that share similar characteristics. For example:
 <ul>
-<li class="fragment">Example: Imagine you’re organizing a large party and you have the task of assigning guests to 4 different tables. Your goal is to ensure that the people sitting at each table have the most in common with each other.</li>
-<li class="fragment">research: we category the country by geo loaciaon, size, and development level ) <!-- -  similar to Inductive approach: deriving general principles or theories from specific observations or instances. --></li>
-</ul></li>
-<li class="fragment">Other Applications: the recommendation (advertisement) in the social media, video recommandations</li>
+<li class="fragment">Party Seating: Assign guests to tables where each shares similarities, akin to clustering.</li>
+<li class="fragment">Analyzing monetary policies, we can cluster them into “hawkish” or “dovish” categories.</li>
 </ul>
-</section>
-<section id="clustering-1" class="slide level2">
-<h2>Clustering</h2>
+</li>
+<li class="fragment">Other Applications:
 <ul>
-<li class="fragment">Properties: Unsupervised learning (unlike other forecasting algorithms=&gt; we train the data and let the algorithm to know the answer we assined)</li>
-<li class="fragment">Existing Methods in machine learning fields: <strong>k-means</strong>, <strong>Hierarchical, DBSCAN, Gaussian Mixture Models (GMM)</strong> (figures)</li>
-<li class="fragment">why we need algorighm =&gt;</li>
+<li class="fragment">
+<strong>Social Media:</strong> Tailored advertisements.</li>
+<li class="fragment">
+<strong>Video Platforms:</strong> Personalized video recommendations.</li>
 </ul>
-</section></section>
-<section>
-<section id="k-means-algorithm" class="title-slide slide level1 center">
-<h1>K-means algorithm</h1>
+</li>
+</ul></section><section id="features-of-the-clustering-task" class="slide level2"><h2><strong>Features of the Clustering Task</strong></h2>
+<ul>
+<li class="fragment">
+<p><strong>Clustering as Unsupervised Learning:</strong></p>
+<ul>
+<li class="fragment">No predefined labels. Identifies patterns and groups autonomously.</li>
+</ul>
+<!-- --><ul>
+<li class="fragment">
+<strong>Contrasts with Supervised Learning:</strong> Uses labels to predict outcomes, e.g., handwriting recognition.</li>
+</ul>
+</li>
+<li class="fragment"><p><strong>Need for Algorithms:</strong> For multi-dimensional data with unknown cluster details.</p></li>
+<li class="fragment"><p><strong>Key Clustering Algorithms:k-means</strong>, <strong>Hierarchical, DBSCAN, Gaussian Mixture Models (GMM)</strong></p></li>
+</ul></section></section><section><section id="k-means-algorithm" class="title-slide slide level1 center"><h1>K-means algorithm</h1>
 
-</section>
-<section id="idea" class="slide level2">
-<h2>Idea</h2>
-<ul>
-<li class="fragment"><strong>Idea</strong>: Recall the assign table problem: we want to group guests in each table to have the largest in common.</li>
-</ul>
+</section><section id="idea" class="slide level2"><h2>Idea</h2>
+<p><strong>Idea</strong>: Recall the assign table problem: we want to group guests in each table to have the largest in common.</p>
 <!-- 
 partition observations into **k** clusters of data with largest similarity within the group memebrs $$\Rightarrow$$ it also implies (can be shown mathematically) the largest dissimilarity for different group members!
 -->
-<ul>
-<li class="fragment"><div>
-<ul>
-<li class="fragment"><div>
+<div>
+<div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+<figure><p><img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div></li>
-</ul>
-</div></li>
-</ul>
-</section>
-<section id="formal-problem-setting" class="slide level2">
-<h2>Formal Problem setting:</h2>
-<p>find the sets <span class="math inline">\(\{C_{1},C_{2},\cdots C_{K}\}\)</span> such that the within-cluster variation <span class="math display">\[W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}} \sum_{j=1}^p \left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^2  \]</span> is minimized. Here <span class="math inline">\(\left(\mathbf{x}_{i,}-\mathbf{x}_{j}\right)^2\)</span> is squared Euclidean distance. <span class="math display">\[\tag{12.17} \min_{C_{1},C_{2},\cdots C_{K}}\sum_{k=1}^{K}W\left(C_{k}\right)\]</span></p>
-</section>
-<section id="algorithms" class="slide level2">
-<h2>Algorithms</h2>
+</div>
+</div>
+</section><section id="idea-1" class="slide level2"><h2>Idea</h2>
+<p><strong>Idea</strong>: Recall the assign table problem: we want to group guests in each table to have the largest in common.</p>
+<div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section><section id="formal-problem-setting" class="slide level2"><h2>Formal Problem Setting:</h2>
+<p>Find the sets <span class="math inline">\(\{C_{1},C_{2},\cdots C_{K}\}\)</span> such that the within-cluster variation <span class="math display">\[W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}} \sum_{j=1}^p \left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^2  \]</span> is minimized. Here <span class="math inline">\(\left(\mathbf{x}_{i,}-\mathbf{x}_{j}\right)^2\)</span> is squared Euclidean distance. <span class="math display">\[\tag{12.17} \min_{C_{1},C_{2},\cdots C_{K}}\sum_{k=1}^{K}W\left(C_{k}\right)\]</span></p>
+</section><section id="algorithms" class="slide level2"><h2>Algorithms</h2>
 <ol type="1">
-<li class="fragment"><strong>Initialization</strong>: Randomly select <span class="math inline">\(k\)</span> initial points to act as the initial centroids.</li>
-<li class="fragment"><strong>Iteration</strong>: Repeat the following steps until the cluster assignments no longer change:
+<li class="fragment">
+<strong>Initialization</strong>: Randomly select <span class="math inline">\(k\)</span> initial points to act as the initial centroids.</li>
+<li class="fragment">
+<strong>Iteration</strong>: Repeat the following steps until the cluster assignments no longer change:
 <ol type="1">
-<li class="fragment"><strong>Reassign cluster</strong>: For each observation, find the closest centroid and reassign the observation to the corresponding cluster.</li>
-<li class="fragment"><strong>Update centroid</strong>: Recalculate the centroid of each cluster by taking the average position of all observations currently in that cluster.</li>
-</ol></li>
+<li class="fragment">
+<strong>Reassign cluster</strong>: For each observation, find the closest centroid and reassign the observation to the corresponding cluster.</li>
+<li class="fragment">
+<strong>Update centroid</strong>: Recalculate the centroid of each cluster by taking the average position of all observations currently in that cluster.</li>
 </ol>
-</section>
-<section id="algorithms---an-example" class="slide level2">
-<h2>Algorithms - an example</h2>
+</li>
+</ol></section><section id="an-example---convergence-process" class="slide level2"><h2>An example - convergence process</h2>
 
-<img data-src="figures_for_slides/kmeans-search.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="intuition" class="slide level2">
-<h2>Intuition</h2>
-<p><span class="math display">\[\tag{12.18} W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^{2}\\=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\overline{\mathbf{x}}_{k,j}\right)^{2} \]</span>where <span class="math inline">\(\overline{\mathbf{x}}_{k,j}\)</span> is the mean for feature <span class="math inline">\(j\)</span> of points in <span class="math inline">\(C_k\)</span> ( i.e.&nbsp;if we write the centroid of cluster <span class="math inline">\(C_k\)</span> as <span class="math inline">\((\overline{\mathbf{x}}_{k,1}, \overline{\mathbf{x}}_{k,1} \cdots \overline{\mathbf{x}}_{k,j} \cdots \overline{\mathbf{x}}_{k,P})\)</span> , then <span class="math inline">\(\overline{\mathbf{x}}_{k,j}\)</span> is the <span class="math inline">\(j\)</span>’s element) (replace by figure)</p>
-</section>
-<section id="intuition-1" class="slide level2">
-<h2>Intuition</h2>
+<img data-src="figures_for_slides/kmeans-search.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="intuition" class="slide level2"><h2>Intuition</h2>
+<p><span class="math display">\[\tag{12.18} W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^{2}\\=2\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\bar{\mathbf{x}}_{k,j}\right)^{2} \]</span></p>
 <ul>
-<li class="fragment"><p>the step “<strong>Update centroid</strong>:” is relying on “centroid” (cluster means) to minimize the deviations within each group.</p></li>
-<li class="fragment"><p>and the step “<strong>reassign cluster</strong>” is to reallocating <span class="math inline">\(\mathbf{x}_{i,j}\)</span> to improve <span class="math inline">\(W\left(C_{k}\right)\)</span></p></li>
-</ul>
-</section></section>
-<section>
-<section id="discussions" class="title-slide slide level1 center">
-<h1>Discussions</h1>
+<li class="fragment">
+<span class="math inline">\(\bar{\mathbf{x}}_{k,j}\)</span> is the mean of feature <span class="math inline">\(j\)</span> for points in cluster <span class="math inline">\(C_k\)</span>.</li>
+<li class="fragment">That is, <span class="math inline">\(\bar{x}_{k,j}\)</span> is the <span class="math inline">\(j^{th}\)</span> element of the centroid of cluster <span class="math inline">\(C_k\)</span>, which can be represented as <span class="math inline">\((\bar{x}_{k,1}, \bar{x}_{k,2}, \cdots, \bar{x}_{k,j}, \cdots, \bar{x}_{k,P})\)</span>.</li>
+</ul></section><section id="intuition-1" class="slide level2"><h2>Intuition</h2>
 
-</section>
-<section id="how-do-we-know-we-find-the-best-clusters" class="slide level2">
-<h2>How do we know we find the “best” clusters?</h2>
-
-<img data-src="figures_for_slides/k-means-performance.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="how-to-pick-the-k" class="slide level2">
-<h2>How to pick the K?</h2>
+<img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section id="intuition-2" class="slide level2"><h2>Intuition</h2>
 <ul>
-<li class="fragment">Elbow approach</li>
-</ul>
-</section>
-<section id="other-issues-sensitive-to-the-data-scale" class="slide level2">
-<h2>Other issues: sensitive to the data scale</h2>
-<p>add one example figure</p>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-</section></section>
-<section>
-<section id="implement-in-r-an-simulation-based-example" class="title-slide slide level1 center">
-<h1>Implement in R: An simulation based example</h1>
-<p><a href="#/step-1-simulate-data-output" class="quarto-xref">Figure&nbsp;1</a> shows</p>
-</section>
-<section id="step-1-simulate-data" class="slide level2">
-<h2>STEP 1: simulate data</h2>
+<li class="fragment"><p>The step “<strong>Update centroid</strong>:” is relying on “centroid” (cluster means) to minimize the deviations within each group. ( <span class="math inline">\(\frac{d^2W\left(C_{k}\right)}{d\bar{\mathbf{x}}^2_{k,j}}&lt;0\)</span> )</p></li>
+<li class="fragment"><p>and the step “<strong>reassign cluster</strong>” is to reallocating <span class="math inline">\(\mathbf{x}_{i,j}\)</span> to improve (reduce) <span class="math inline">\(W\left(C_{k}\right)\)</span></p></li>
+</ul></section></section><section><section id="discussions" class="title-slide slide level1 center"><h1>Discussions</h1>
+
+</section><section id="how-do-we-know-we-find-the-best-clusters" class="slide level2"><h2>How do we know we find the “best” clusters?</h2>
+
+<img data-src="figures_for_slides/k-means-performance.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="other-issues" class="slide level2"><h2>Other issues</h2>
+<ul>
+<li class="fragment">How to pick the K? Elbow approach</li>
+<li class="fragment">Sensitive to the data scale</li>
+<li class="fragment">Sensitive to the outlier</li>
+</ul></section><section id="section" class="slide level2"><h2></h2>
+</section></section><section><section id="implement-in-r-an-simulation-based-example" class="title-slide slide level1 center"><h1>Implement in R: An simulation based example</h1>
+
+</section><section id="step-1-simulate-data" class="slide level2"><h2>STEP 1: simulate data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Set the number of points</span></span>
 <span id="cb1-2"><a href=""></a>ssize <span class="ot">&lt;-</span> <span class="dv">100</span></span>
@@ -577,22 +560,18 @@ partition observations into **k** clusters of data with largest similarity withi
 <span id="cb1-20"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section>
-<section id="step-1-simulate-data-output" class="slide level2 output-location-slide"><h2>STEP 1: simulate data</h2><div class="cell output-location-slide">
+</section><section id="step-1-simulate-data-output" class="slide level2 output-location-slide"><h2>STEP 1: simulate data</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div id="fig-initial-genraed-data" class="quarto-figure quarto-figure-center quarto-float">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-initial-genraed-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-initial-genraed-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="ML_teaching_files/figure-revealjs/fig-initial-genraed-data-1.png" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-initial-genraed-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: data distribution
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
-</div></section><section id="step-2-run-kmeans-clustering" class="slide level2">
-<h2>STEP 2: run kmeans clustering</h2>
+</div></section><section id="step-2-run-kmeans-clustering" class="slide level2"><h2>STEP 2: run kmeans clustering</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># #| code-fold: true</span></span>
 <span id="cb2-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -627,17 +606,14 @@ Figure&nbsp;1: data distribution
 <span id="cb2-31"><a href=""></a><span class="fu">grid.arrange</span>(<span class="at">grobs =</span> plots, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># Arrange the plots in a 2 by 2 grid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section>
-<section id="step-2-run-kmeans-clustering-output" class="slide level2 output-location-slide"><h2>STEP 2: run kmeans clustering</h2><div class="cell output-location-slide">
+</section><section id="step-2-run-kmeans-clustering-output" class="slide level2 output-location-slide"><h2>STEP 2: run kmeans clustering</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:100.0%"></p>
+<figure><p><img data-src="ML_teaching_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+</div></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -652,27 +628,10 @@ James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, et al. 2013. <e
 </div>
 </div>
 </section></section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="ML_teaching_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="ML_teaching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="ML_teaching_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="ML_teaching_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="ML_teaching_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="ML_teaching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/notes/notes.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/search/search.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="ML_teaching_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -863,9 +822,7 @@ James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, et al. 2013. <e
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -900,9 +857,7 @@ James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, et al. 2013. <e
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1056,6 +1011,6 @@ James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, et al. 2013. <e
       }
     });
     </script>
-    
+
 
 </body></html>
