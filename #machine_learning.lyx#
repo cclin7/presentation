@@ -1,0 +1,705 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\paperwidth 8in
+\paperheight 9in
+\leftmargin 0.7in
+\topmargin 0.9in
+\rightmargin 0.7in
+\bottommargin 0.9in
+\secnumdepth 3
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Machine learning ST3189 
+\end_layout
+
+\begin_layout Author
+Lecture N - Clustering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ideas.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+add one economic examples.
+ fiscal policy or monetary policy regime 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Today's topic and Outline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Overview on Clustering
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+to partition a dataset into some distinct, non-overlapping subgroups (clusters)
+ based on similarity.
+\end_layout
+
+\begin_layout Itemize
+K-means and Hierarchical clustering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+k-means methods
+\end_layout
+
+\begin_layout Itemize
+An example using R
+\end_layout
+
+\begin_layout Itemize
+Reference: An Introduction to Statistical Learning_R (12.4) and Pattern Recogniti
+on and Machine Learning by Bishop (9.1)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Clustering— Why and How? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is clustering? why do we want to do so? 
+\end_layout
+
+\begin_layout Itemize
+How to do this? 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Idea:
+\end_layout
+
+\begin_layout Itemize
+real word applicaions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means-methods
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Initialize Centroids:
+\series default
+ Start by selecting k points from the dataset as the initial centroids,
+ either randomly or based on a specific strategy.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assign Points to the Closest Centroid: 
+\series default
+For each point in the dataset, calculate its distance to each centroid and
+ assign it to the nearest cluster.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Update Centroids: 
+\series default
+Recalculate the centroids of each cluster as the mean position of all points
+ assigned to the cluster.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Repeat Until Convergence: 
+\series default
+Continue the process of assigning points and updating centroids until the
+ positions of the centroids stabilize.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means - algorithm- notaions and concepts
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Pick 
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+k
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+, the number of clusters you want to separate.
+ and select a starting centroid 
+\begin_inset Formula $P^{(0)}=(P_{1}^{(0)},P_{2}^{(0)},\cdots P_{k}^{(0)})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For each observation, assigh it to the cloest centroid point 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+, and assign it as a member of cluster 
+\begin_inset Formula $i$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+For each of the K clusters, compute the updated cluster centroid 
+\begin_inset Formula $P^{(i)}=(P_{1}^{(i)},P_{2}^{(i)},\cdots P_{k}^{(i)})$
+\end_inset
+
+.
+ The kth updated cluster centroid is the vector of the p feature means for
+ the observations in the kth cluster.
+ 
+\end_layout
+
+\begin_layout Itemize
+repeat above steps until 
+\begin_inset Formula $P^{(i)}$
+\end_inset
+
+ converges.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Watch points 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+select the initial points -> may leads to different clusters.(example)
+\end_layout
+
+\begin_layout Enumerate
+measure on the distance: Eculidean distance, Mahatan distance
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min_{C_{1},C_{2},\cdots C_{k}}\sum_{k=1}^{K}W\left(C_{k}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Math properties 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+select the initial points -> may leads to different clusters.
+\end_layout
+
+\begin_layout Enumerate
+measure on the distance: Eculidean distance, Mahatan distance
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+within-cluster variation
+\series default
+ for cluster Ck is a measure W (Ck )
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Formula 
+\[
+W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,j\in C_{k}}\text{distance}\left(\mathbf{x}_{i,},\mathbf{x}_{j}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $|C_{k}|$
+\end_inset
+
+ is the number of observation in 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^{2}=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\overline{\mathbf{x}}_{k,j}\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Other issues
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+How to select the best categorized results? 
+\end_layout
+
+\begin_layout Enumerate
+How good the clustering? between_SS / total_SS 
+\end_layout
+
+\begin_layout Enumerate
+How to select 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks: Permanent Fall in Output
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FIGURE 12.9 kmeans.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+An example: a baby model 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means - computational applications 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Using R to solve our problem.
+ 
+\end_layout
+
+\begin_layout Enumerate
+A two dimensional example.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\backslash
+Huge Let's start 
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Shortcomings
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Setup the basic framework.
+\end_layout
+
+\begin_layout Enumerate
+Obtain the key predictions on how a small open developing economy work.
+\end_layout
+
+\begin_layout Enumerate
+We will then introduce frictions/externality and the policy implication
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+]
+\end_layout
+
+\end_body
+\end_document

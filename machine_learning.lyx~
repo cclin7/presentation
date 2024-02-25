@@ -1,0 +1,2345 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\paperwidth 8in
+\paperheight 9in
+\leftmargin 0.7in
+\topmargin 0.9in
+\rightmargin 0.7in
+\bottommargin 0.9in
+\secnumdepth 3
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Machine learning ST3189 
+\end_layout
+
+\begin_layout Author
+Lecture N - Clustering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ideas.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+add one economic examples.
+ fiscal policy or monetary policy regime 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Today's topic and Outline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Overview on Clustering
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+to partition a dataset into some distinct, non-overlapping subgroups (clusters)
+ based on similarity.
+\end_layout
+
+\begin_layout Itemize
+K-means and Hierarchical clustering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+k-means methods
+\end_layout
+
+\begin_layout Itemize
+An example using R
+\end_layout
+
+\begin_layout Itemize
+Reference: An Introduction to Statistical Learning_R (12.4) and Pattern Recogniti
+on and Machine Learning by Bishop (9.1)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Clustering— Why and How? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is clustering? why do we want to do so? 
+\end_layout
+
+\begin_layout Itemize
+How to do this? 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Idea:
+\end_layout
+
+\begin_layout Itemize
+real word applicaions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means-methods
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Initialize Centroids:
+\series default
+ Start by selecting k points from the dataset as the initial centroids,
+ either randomly or based on a specific strategy.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assign Points to the Closest Centroid: 
+\series default
+For each point in the dataset, calculate its distance to each centroid and
+ assign it to the nearest cluster.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Update Centroids: 
+\series default
+Recalculate the centroids of each cluster as the mean position of all points
+ assigned to the cluster.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Repeat Until Convergence: 
+\series default
+Continue the process of assigning points and updating centroids until the
+ positions of the centroids stabilize.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means - algorithm- notaions and concepts
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Pick 
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+k
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+, the number of clusters you want to separate.
+ and select a starting centroid 
+\begin_inset Formula $P^{(0)}=(P_{1}^{(0)},P_{2}^{(0)},\cdots P_{k}^{(0)})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For each observation, assigh it to the cloest centroid point 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+, and assign it as a member of cluster 
+\begin_inset Formula $i$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+For each of the K clusters, compute the updated cluster centroid 
+\begin_inset Formula $P^{(i)}=(P_{1}^{(i)},P_{2}^{(i)},\cdots P_{k}^{(i)})$
+\end_inset
+
+.
+ The kth updated cluster centroid is the vector of the p feature means for
+ the observations in the kth cluster.
+ 
+\end_layout
+
+\begin_layout Itemize
+repeat above steps until 
+\begin_inset Formula $P^{(i)}$
+\end_inset
+
+ converges.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Watch points 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+select the initial points -> may leads to different clusters.
+\end_layout
+
+\begin_layout Enumerate
+measure on the distance: Eculidean distance, Mahatan distance
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Math properties 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+select the initial points -> may leads to different clusters.
+\end_layout
+
+\begin_layout Enumerate
+measure on the distance: Eculidean distance, Mahatan distance
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+within-cluster variation
+\series default
+ for cluster Ck is a measure W (Ck )
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Formula 
+\[
+W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,j\in C_{k}}\text{distance}\left(\mathbf{x}_{i,},\mathbf{x}_{j}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $|C_{k}|$
+\end_inset
+
+ is the number of observation in 
+\begin_inset Formula $C_{k}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Other issues
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+How to select the best categorized results? 
+\end_layout
+
+\begin_layout Enumerate
+How to select 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks: Permanent Fall in Output
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/FIGURE 12.9 kmeans.png
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+An example: a baby model 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means - computational applications 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Using R to solve our problem.
+ 
+\end_layout
+
+\begin_layout Enumerate
+A two dimensional example.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\backslash
+Huge Let's start 
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Shortcomings
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Setup the basic framework.
+\end_layout
+
+\begin_layout Enumerate
+Obtain the key predictions on how a small open developing economy work.
+\end_layout
+
+\begin_layout Enumerate
+We will then introduce frictions/externality and the policy implication
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Basic Inter-temporal Model
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Key prediction: 
+\series bold
+trade balance
+\series default
+ (next export) and the 
+\series bold
+current account
+\series default
+ (net saving) are pro-cyclical; in other words, they improve in good times
+ and worsen in bad times.
+\end_layout
+
+\begin_layout Enumerate
+We will compare the model prediction with the empirical evidence.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We use continuous time model.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Integral 
+\begin_inset Formula $\int$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ summation 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e^{rt}=\left(1+r\right)^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lagrange methods 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ almost the same as what you learned in the discrete time model.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A small open economy inhabited by a large number of identical consumers.
+\end_layout
+
+\begin_layout Enumerate
+There is no uncertainty and consumers are 
+\series bold
+\emph on
+perfect foresight (
+\series default
+\emph default
+know what will happen
+\series bold
+\emph on
+)
+\end_layout
+
+\begin_layout Enumerate
+There is only one (
+\series bold
+tradable
+\series default
+ and non-storable) good.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The economy takes the price of the tradable good as given.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Capital mobility is perfect; an exogenously given real interest rate 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is given.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The consumer's problem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utility function in any instantaneous time 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+u(c_{t})e^{-\beta t}\simeq\frac{1}{\left(1+\beta\right)^{t}}u(c_{t})
+\]
+
+\end_inset
+
+here 
+\begin_inset Formula $\beta$
+\end_inset
+
+ represents the discount rate (Not the usual 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in the discrete time model)
+\end_layout
+
+\begin_layout Itemize
+Life time utility
+\begin_inset Formula 
+\[
+U_{0}=\int_{0}^{\infty}u\left(c_{t}\right)e^{-\beta t}dt\simeq\sum_{t=0}^{\infty}\frac{1}{\left(1+\beta\right)^{t}}u\left(c_{t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Budget constraint 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The consumer’s ﬂow budget constraint is thus given by
+\begin_inset Formula 
+\[
+\dot{b}\text{(saving)}=(\Delta b_{t+1})=rb_{t}+y_{t}-c_{t},
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ denotes the endowment ﬂow.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{t}$
+\end_inset
+
+ denote net foreign assets denominated in terms of the tradable good held
+ by the consumer at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ (a state variable, like the 
+\begin_inset Formula $k_{t}$
+\end_inset
+
+ in the discrete model)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The consumer's maximization problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\max_{\left\{ c_{t},t\in[0,\infty)\right\} } & \int_{0}^{\infty}u\left(c_{t}\right)e^{-\beta t}dt\\
+s.t. & \dot{b}=rb_{t}+y_{t}-c_{t}\text{ budget constraint}\\
+ & \lim_{t\rightarrow\infty}b_{t}e^{-rt}\geq0\text{ no-Ponzi games condition}\\
+ & b_{0}\text{is given}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimal requires
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow\infty}b_{t}e^{-rt}\leq0
+\]
+
+\end_inset
+
+Thus
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow\infty}b_{t}e^{-rt}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal condition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Rewrite the budget constraint (integrate forward)
+\begin_inset Formula 
+\begin{align*}
+ & \left(\dot{b}-rb_{t}\right)e^{-rt}=\left(y_{t}-c_{t}\right)e^{-rt}\\
+\Rightarrow & b_{0}+\int_{0}^{\infty}y_{t}e^{-rt}dt=\int_{0}^{\infty}c_{t}e^{-rt}dt
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\int\left(\dot{b}-rb_{t}\right)e^{-rt}dt=\int\frac{db_{t}e^{-rt}}{dt}dt=b_{T}e^{-rT}-b_{0}
+\]
+
+\end_inset
+
+The Lagrangian function
+\begin_inset Formula 
+\[
+\mathcal{L}=\int_{0}^{\infty}u\left(c_{t}\right)e^{-\beta t}dt+\lambda\left(b_{0}+\int_{0}^{\infty}y_{t}e^{-rt}dt-\int_{0}^{\infty}c_{t}e^{-rt}dt\right)
+\]
+
+\end_inset
+
+The optimal condition is 
+\begin_inset Formula 
+\[
+u'\left(c_{t}\right)e^{-\beta t}=\lambda e^{-rt}\tag{1.10}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Discussion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\emph on
+
+\begin_inset Formula $r$
+\end_inset
+
+
+\emph default
+ were still constant over time but different from 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (i.e., 
+\begin_inset Formula $\beta\neq r$
+\end_inset
+
+), there would be consumption tilting.
+ Consumption would be either increasing or decreasing over time.
+\end_layout
+
+\begin_layout Enumerate
+We could have a fluctuating world real interest rate over time.
+ Whenever 
+\begin_inset Formula $r_{t}>\beta$
+\end_inset
+
+, consumption would be increasing, reflecting the fact that households discount
+ utility at a lower rate than the market discounts resources.
+ The converse is true whenever 
+\begin_inset Formula $r_{t}<\beta$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\frac{u'\left(c_{t}\right)e^{-\beta t}}{u'\left(c_{t+1}\right)e^{-\beta\left(t+1\right)}}=\frac{\lambda e^{-rt}}{\lambda e^{-r\left(t+1\right)}}\Rightarrow\frac{u'\left(c_{t}\right)}{u'\left(c_{t+1}\right)}=e^{r_{t}-\beta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Some Definitions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Trade Balance (Net Export) 
+\begin_inset Formula $TB_{t}=y_{t}-c_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Income Balance 
+\begin_inset Formula $IB_{t}\equiv rb_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The income that domestic residents earn from, less that they pay to, the
+ rest of the world from working and from financial investments 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+https://www.rba.gov.au/education/resources/explainers/the-balance-of-payments.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Current account 
+\begin_inset Formula $CA_{t}=TB_{t}+IB_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $=rb_{t}+y_{t}-c_{t}=\dot{b_{t}}$
+\end_inset
+
+ = a country's saving.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Capital account, 
+\begin_inset Formula $KA_{t}$
+\end_inset
+
+ (capital inflow/payments of debts and claims): 
+\begin_inset Formula $KA_{t}\equiv-\dot{b}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The current account represents a country's net income over a period of time,
+ while the capital account records the net change of assets and liabilities
+ during a particular year.
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Balance of payment =
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Current account + Capital account 
+\begin_inset Formula $BOP\equiv KA_{t}+CA_{t}=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution (I)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consumption equals “permanent income”
+\begin_inset Formula 
+\[
+c=r\left(b_{0}+\int_{0}^{\infty}y_{t}e^{-rt}dt\right)
+\]
+
+\end_inset
+
+the annuity value of the present discounted value of available resources.
+ 
+\end_layout
+
+\begin_layout Enumerate
+It is just a useful conceptual benchmark and should not be viewed as the
+ key empirical prediction of the modern inter-temporal approach to the current
+ account.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Discussion on the consumption path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+When we consider more general settings and frictions, the deviation to the
+ flat path can be efficient/inefficient.
+ Such as:
+\end_layout
+
+\begin_layout Enumerate
+Efficient deviation: fluctuations in the interest rate or terms of trade.
+\end_layout
+
+\begin_layout Enumerate
+Inefficient deviation: Imperfect capital market 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solutions (II)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The path of the trade balance?
+\begin_inset Formula 
+\[
+TB_{t}=y_{t}-c
+\]
+
+\end_inset
+
+It follows that in “good times” (i.e., when 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is high), the economy will run trade surpluses, while in “bad times” (i.e.,
+ when 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is low) the economy will run trade deficits.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Current account (Saving): 
+\begin_inset Formula $CA_{t}=rb_{t}+y_{t}-c_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+When output switches from high to low, the current account balance worsens
+ since consumption is ﬂat and 
+\begin_inset Formula $b_{t}$
+\end_inset
+
+ is a predetermined variable.
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, in bad times, the economy increases its borrowing from the rest of
+ the world.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stationary Equilibrium (I)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Concept is identical to 
+\begin_inset Quotes eld
+\end_inset
+
+steady state
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If exogenous variables are constant over time, so will endogenous variables.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $y_{t}=y^{H}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $c=r\left(b_{0}+\int_{0}^{\infty}y_{t}e^{-rt}dt\right)=rb_{0}+y^{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Trade balance 
+\begin_inset Formula $TB_{t}=y^{H}-\left(rb_{0}+y^{H}\right)=-rb_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stationary Equilibrium (II)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In a stationary equilibrium, the Current account (=saving = 
+\begin_inset Formula $rb_{t}+y_{t}-c_{t}$
+\end_inset
+
+) will always be zero.
+ Why?
+\begin_inset Formula 
+\[
+\dot{b_{t}}=rb_{t}+y_{t}-c_{t}=rb_{t}-rb_{0}
+\]
+
+\end_inset
+
+At 
+\begin_inset Formula $t=0$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{b}_{0}=rb_{t}-rb_{0}=0$
+\end_inset
+
+, which implies 
+\begin_inset Formula $b_{t}=b_{0}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since net foreign assets 
+\begin_inset Formula $b_{t}$
+\end_inset
+
+ are constant over time, the current account is always zero along a stationary
+ equilibrium.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\backslash
+Huge How Shocks affect the economy
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Welfare Analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We conclude that the economy adjusts immediately to a permanent negative
+ shock.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $c$
+\end_inset
+
+ falls immediately, the trade balance 
+\begin_inset Formula $TB_{t}=y^{L}-c^{L}=-rb_{0}$
+\end_inset
+
+ does not change.
+ Current account 
+\begin_inset Formula $\dot{b_{t}}=rb_{t}+y_{t}-c_{t}=rb_{0}-rb_{0}=0$
+\end_inset
+
+ also does not change.
+\end_layout
+
+\begin_layout Enumerate
+Since there are no distortions in this economy, this response is socially
+ optimal.
+ 
+\end_layout
+
+\begin_layout Enumerate
+This result underlies the standard policy prescription that says that, however
+ painful, an economy has no choice but to adjust to any long-lasting negative
+ shock.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks: Temporary Fall in Output
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+There is an unanticipated and temporary fall in output.
+ Formally, the path of output for 
+\begin_inset Formula $t≥0$
+\end_inset
+
+.
+ Precisely speaking 
+\begin_inset Formula 
+\begin{align*}
+y & =y^{L},\;0\leq t<T\\
+y & =y^{H},\;t\geq T
+\end{align*}
+
+\end_inset
+
+The budget constraint becomes
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}c_{t}e^{-rt}dt=b_{0}+\int_{0}^{T}y^{L}e^{-rt}dt+\int_{T}^{\infty}y^{H}e^{-rt}dt
+\]
+
+\end_inset
+
+The equilibrium condition implies:
+\begin_inset Formula 
+\[
+c=rb_{0}+y^{L}\left(1-e^{-rT}\right)+y^{H}e^{-rT}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks—mathematics 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Given 
+\begin_inset Formula 
+\begin{align*}
+c & =rb_{0}+y^{L}\left(1-e^{-rT}\right)+y^{H}e^{-rT}\tag{1.30}
+\end{align*}
+
+\end_inset
+
+Then trade balance are constants
+\begin_inset Formula 
+\begin{align*}
+TB_{t} & =y^{L}-c=-rb_{0}-\left(y^{H}-y^{L}\right)e^{-rT}<-rb_{0}\;t<T\\
+TB_{t} & =y^{H}-c=-rb_{0}+\left(y^{H}-y^{L}\right)\left(1-e^{-rT}\right)>-rb_{0}\;t>T
+\end{align*}
+
+\end_inset
+
+The saving (current account)
+\begin_inset Formula 
+\begin{align*}
+\dot{b} & =rb_{t}+y^{L}-c,\;t<T\\
+\dot{b} & =rb_{t}+y^{H}-c,\;t>T
+\end{align*}
+
+\end_inset
+
+Use the formula of first order DE, we obtain 
+\begin_inset Formula 
+\begin{align*}
+b_{t} & =b_{0}e^{rt}+\frac{y^{L}-c}{r}\left(e^{rt}-1\right),\;t<T\\
+b_{t} & =b_{T}e^{r(t-T)}+\frac{y^{H}-c}{r}\left(e^{r\left(t-T\right)}-1\right),\;t>T
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks—mathematics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Substitute 
+\begin_inset Formula $c$
+\end_inset
+
+ into 
+\begin_inset Formula $b_{t}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+b_{t} & =b_{0}-e^{-r\left(T-t\right)}\left(\frac{y^{H}-y^{L}}{r}\right)\left(1-e^{rt}\right)\;t<T\\
+b_{t} & =b_{0}-\left(\frac{y^{H}-y^{L}}{r}\right)\left(1-e^{rT}\right)\;t\geq T
+\end{align*}
+
+\end_inset
+
+Take the first derivative
+\begin_inset Formula 
+\begin{align}
+\dot{b}_{t} & =-\left(y^{H}-y^{L}\right)e^{-r\left(T-t\right)}<0\;t<T\label{eq:bdot}\\
+\dot{b}_{t} & =0\;t\geq T\label{eq:bdotp}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unanticipated Shocks—the response of current account
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The second derivate provide information on how CA (saving) changes
+\begin_inset Formula 
+\begin{equation}
+\ddot{b_{t}}=-r\left(y^{H}-y^{L}\right)e^{-r\left(T-r\right)}<0\label{eq:bdoubledot}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $b_{0}=0$
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\dot{b}_{0}=rb_{0}+y^{L}-c<0$
+\end_inset
+
+.
+ We know when the shock happens, the current account drops.
+ 
+\end_layout
+
+\begin_layout Enumerate
+From 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:bdot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:bdotp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:bdoubledot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we can easily understand how CA respond to this 
+\begin_inset Quotes eld
+\end_inset
+
+income change
+\begin_inset Quotes erd
+\end_inset
+
+ .
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Implication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+In a stochastic version of our model, this comovement would translate into
+ a positive correlation between saving and output.
+\end_layout
+
+\begin_layout Enumerate
+The average correlation is positive in both group of countries (in fact
+ the correlation is negative in only two out of the 40 countries, both developin
+g).
+ Further, the average correlation is smaller in developing (0.46) than in
+ industrial countries (0.79).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+In a world with no frictions and a constant world real interest rate, a
+ small open economy will achieve perfect consumption smoothing even when
+ output fluctuates.
+\end_layout
+
+\begin_layout Enumerate
+The key message that follows from the analysis of unanticipated negative
+ shocks is that the economy “adjusts” to permanent shocks but “finances”
+ temporary shocks.
+\end_layout
+
+\begin_layout Enumerate
+In practice, however, many countries face a variety of frictions that will
+ imply substantial (and welfare-reducing) departures from this first-best
+ world.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Appendix—continuous time approximation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When the 
+\begin_inset Formula $t$
+\end_inset
+
+ represents a short interval, or 
+\begin_inset Formula $g$
+\end_inset
+
+ is small 
+\begin_inset Formula 
+\[
+y\left(t\right)=y_{0}e^{gt}\simeq y_{0}\left(1+g\right)^{t}
+\]
+
+\end_inset
+
+ ex: 
+\begin_inset Formula $g=0.01$
+\end_inset
+
+, 
+\begin_inset Formula $t=3$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+y(3) & =y_{0}e^{g3}=y_{0}\times1.030455\\
+y_{3} & =y_{0}\left(1+g\right)^{t}=y_{0}\times1.03030
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+EX 1: the discounted utility in a discrete time model, 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\left(1+\rho\right)^{t}}U\left(C_{t}\right) & =\left(1+\rho\right)^{-t}U\left(C_{t}\right)\simeq e^{-\rho t}U\left(C_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex 2: The present value of 
+\begin_inset Formula $I$
+\end_inset
+
+ in 
+\begin_inset Formula $t$
+\end_inset
+
+ periods 
+\begin_inset Formula 
+\[
+\frac{I}{\left(1+r\right)^{t}}\simeq e^{-rt}I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Appendix—continuous time approximation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The definition of 
+\begin_inset Formula $e\left(x\right)$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+e^{x}=\lim_{n\rightarrow\infty}\left(1+\frac{x}{n}\right)^{\frac{n}{x}}
+\]
+
+\end_inset
+
+That is, the annual yields given the annual interest rate 
+\begin_inset Formula $x$
+\end_inset
+
+, compounded 
+\begin_inset Formula $n$
+\end_inset
+
+ times.
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $t$
+\end_inset
+
+ years, 
+\begin_inset Formula 
+\begin{align*}
+e^{tx} & =\lim_{n\rightarrow\infty}\left(1+\frac{x}{n}\right)^{\frac{n}{x}t}=\left(\lim_{n\rightarrow\infty}\left(1+\frac{x}{n}\right)^{\frac{n}{x}}\right)^{t}=\left(e^{x}\right)^{t}=e^{tx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Appendix: Interpretation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\lambda}{r}=\int_{0}^{\infty}u'\left(c_{t}\right)e^{-rt}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+LHS: a stock price that reflects the present discounted value of a stream
+ of dividends.
+\end_layout
+
+\begin_layout Enumerate
+The variable λ would correspond to the annuity value of the present discounted
+ value of dividends.
+\end_layout
+
+\begin_layout Enumerate
+A stock price will not change in response to anticipated changes in the
+ factors driving dividends because such information is already incorporated
+ in the price.
+\end_layout
+
+\begin_layout Enumerate
+Anticipated changes in output do not affect “permanent income”.
+\end_layout
+
+\begin_layout Enumerate
+But a stock price may change in response to “news”.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal condition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Rewrite the budget constraint (integrate forward)
+\begin_inset Formula 
+\begin{align*}
+\left(\dot{b}-rb_{t}\right)e^{-rt}=\left(y_{t}-c_{t}\right)e^{-rt} & \Rightarrow\int\left(\dot{b}-rb_{t}\right)e^{-rt}dt\\
+ & =\int\left(y_{t}-c_{t}\right)e^{-rt}dt
+\end{align*}
+
+\end_inset
+
+LHS:
+\begin_inset Formula 
+\begin{align*}
+\int\left(\dot{b}-rb_{t}\right)e^{-rt}dt & =\int_{0}^{T}\frac{d\left(be^{-rt}\right)}{dt}dt\\
+ & =b_{T}e^{-rT}-b_{0}\left(T\right)e^{-r0}=b_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+First order differential equation formula
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given the first order differential equation 
+\begin_inset Formula $\dot{y}+p\left(x\right)y=Q\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution is 
+\begin_inset Formula $y\left(t\right)=\frac{1}{I\left(x\right)}\left\{ \int I\left(x\right)Q\left(x\right)dx+C\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $I\left(x\right)=e^{\int p\left(x\right)dx}$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ is a constant 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+First order differential equation formula- example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example: 
+\begin_inset Formula $\dot{b}=rb+y^{L}-c\Rightarrow\dot{b}-rb=y^{L}-c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $p\left(t\right)=-r$
+\end_inset
+
+ ,and 
+\begin_inset Formula $Q\left(t\right)=y^{L}-c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The we can solve 
+\begin_inset Formula $I\left(t\right)=e^{\int-rdt}=e^{-rt}$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+Then 
+\begin_inset Formula $b\left(t\right)=\frac{1}{e^{-rt}}\left\{ \int e^{-rt}\left(y^{L}-c\right)dt+C\right\} =e^{rt}\left\{ \left(y^{L}-c\right)\frac{1}{-r}e^{-rt}+C\right\} =-\frac{1}{r}\left(y^{L}-c\right)+e^{rt}C$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Given 
+\begin_inset Formula $b\left(0\right)=b_{0}=-\frac{1}{r}\left(y^{L}-c\right)+e^{r0}C\Rightarrow C=b_{0}+\frac{1}{r}\left(y^{L}-c\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so 
+\begin_inset Formula $b\left(t\right)=-\frac{1}{r}\left(y^{L}-c\right)+e^{rt}\left\{ b_{0}+\frac{1}{r}\left(y^{L}-c\right)\right\} =\frac{1}{r}\left(y^{L}-c\right)\left(e^{rt}-1\right)+b_{0}e^{rt}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

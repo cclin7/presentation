@@ -1,0 +1,232 @@
+---
+title: "Machine learning ST3189"
+subtitle: "Lecture N - Clustering"
+author: "Jim Lin"
+format: 
+  revealjs: 
+    chalkboard: true 
+    code-link: true 
+    slide-number: true
+    theme: dark
+ #   footer: "Machine learning ST3189"
+    incremental: true
+editor: visual
+execute:
+  echo: true
+bibliography: references.bib
+---
+
+## Ideas (may include later)
+
+-   Add one economic examples. fiscal policy or monetary policy regime
+
+## Today's topic and Outline
+
+-   Overview on Clustering
+
+-   k-means methods: idea, math, challenges
+
+-   An example using R to implement K-means
+
+-   Reference: See more detailed discussion in [@james2013introduction, ch12.4; and @bishop2006pattern ch9.1]
+
+# Introduction - Clustering
+
+## Clustering
+
+-   What is clustering: category our data into several groups sharing similar properties.
+    -   Example: Imagine you're organizing a large party and you have the task of assigning guests to 4 different tables. Your goal is to ensure that the people sitting at each table have the most in common with each other.
+    -   research: we category the country by geo loaciaon, size, and development level ) <!-- -  similar to Inductive approach: deriving general principles or theories from specific observations or instances. -->
+-   Other Applications: the recommendation (advertisement) in the social media, video recommandations
+
+## Clustering
+
+-   Properties: Unsupervised learning (unlike other forecasting algorithms=\> we train the data and let the algorithm to know the answer we assined)
+-   Existing Methods in machine learning fields: **k-means**, **Hierarchical, DBSCAN, Gaussian Mixture Models (GMM)** (figures)
+-   why we need algorighm =\>
+
+# K-means algorithm
+
+## Idea
+
+-   **Idea**: Recall the assign table problem: we want to group guests in each table to have the largest in common.
+
+```{=html}
+<!-- 
+partition observations into **k** clusters of data with largest similarity within the group memebrs $$\Rightarrow$$ it also implies (can be shown mathematically) the largest dissimilarity for different group members!
+-->
+```
+-   <div>
+
+    -   <div>
+
+        ```{r}
+        #| echo: false
+        #| warning: false
+        #| 
+        # Define points for Cluster 1
+        library(ggplot2)
+        library(tidyverse)
+
+        cluster1 <- data.frame(x = c(1, 2, 3), y = c(2, 3, 1), cluster = 'Cluster 1')
+
+        # Define points for Cluster 2
+        cluster2 <- data.frame(x = c(5, 6, 7,4.5), y = c(6, 5, 7,5.5), cluster = 'Cluster 2')
+
+        # Combine the clusters into one dataset
+        data <- rbind(cluster1, cluster2)
+        library(ggplot2)
+
+        # Function to generate all pairs of points for line segments within each cluster
+        generate_lines <- function(cluster) {
+          expand.grid(1:nrow(cluster), 1:nrow(cluster)) %>%
+            filter(Var1 < Var2) %>%
+            mutate(x = cluster$x[Var1], xend = cluster$x[Var2],
+                   y = cluster$y[Var1], yend = cluster$y[Var2],
+                   cluster = cluster$cluster[1])
+        }
+
+        # Apply the function to each cluster and combine the results
+        lines1 <- generate_lines(cluster1)
+        lines2 <- generate_lines(cluster2)
+        lines <- rbind(lines1, lines2)
+
+        # Plot
+        ggplot() +
+          geom_segment(data = lines, aes(x = x, y = y, xend = xend, yend = yend, color = cluster), size = 1) +
+          geom_point(data = data, aes(x = x, y = y, color = cluster), size = 4) +
+          scale_color_manual(values = c('Cluster 1' = 'red', 'Cluster 2' = 'blue')) +
+          theme_minimal() +
+          labs(title = "Complete Graph for Each Cluster", x = "X Axis", y = "Y Axis")
+
+        ```
+
+        </div>
+
+    </div>
+
+## Formal Problem setting:
+
+find the sets $\{C_{1},C_{2},\cdots C_{K}\}$ such that the within-cluster variation $$W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}} \sum_{j=1}^p \left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^2  $$ is minimized. Here $\left(\mathbf{x}_{i,}-\mathbf{x}_{j}\right)^2$ is squared Euclidean distance. $$\tag{12.17} \min_{C_{1},C_{2},\cdots C_{K}}\sum_{k=1}^{K}W\left(C_{k}\right)$$
+
+## Algorithms
+
+1.  **Initialization**: Randomly select $k$ initial points to act as the initial centroids.
+2.  **Iteration**: Repeat the following steps until the cluster assignments no longer change:
+    1.  **Reassign cluster**: For each observation, find the closest centroid and reassign the observation to the corresponding cluster.
+    2.  **Update centroid**: Recalculate the centroid of each cluster by taking the average position of all observations currently in that cluster.
+
+## Algorithms - an example
+
+![](figures_for_slides/kmeans-search.png){fig-align="center"}
+
+## Intuition
+
+$$\tag{12.18} W\left(C_{k}\right)=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\mathbf{x}_{i',j}\right)^{2}\\=\frac{1}{|C_{k}|}\sum_{i,i'\in C_{k}}\sum_{j=1}^{p}\left(\mathbf{x}_{i,j}-\overline{\mathbf{x}}_{k,j}\right)^{2} $$where $\overline{\mathbf{x}}_{k,j}$ is the mean for feature $j$ of points in $C_k$ ( i.e. if we write the centroid of cluster $C_k$ as $(\overline{\mathbf{x}}_{k,1}, \overline{\mathbf{x}}_{k,1} \cdots \overline{\mathbf{x}}_{k,j} \cdots \overline{\mathbf{x}}_{k,P})$ , then $\overline{\mathbf{x}}_{k,j}$ is the $j$'s element) (replace by figure)
+
+## Intuition
+
+-   the step "**Update centroid**:" is relying on "centroid" (cluster means) to minimize the deviations within each group.
+
+-   and the step "**reassign cluster**" is to reallocating $\mathbf{x}_{i,j}$ to improve $W\left(C_{k}\right)$
+
+# Discussions
+
+## How do we know we find the "best" clusters?
+
+![](figures_for_slides/k-means-performance.png){fig-align="center"}
+
+## How to pick the K?
+
+-   Elbow approach
+
+## Other issues: sensitive to the data scale
+
+add one example figure
+
+## 
+
+# Implement in R: An simulation based example
+
+@fig-initial-genraed-data shows
+
+```{r}
+#| include: false
+library('tidyverse')
+library('fredr')
+```
+
+## STEP 1: simulate data
+
+```{r, echo = c(1:20)}
+#| label: fig-initial-genraed-data
+#| code-line-numbers: "1|6-7"
+#| output-location: slide
+#| fig-cap: data distribution
+# Set the number of points
+ssize <- 100
+# Example means/stds for 3 groups
+means <- c(0, 1, 2)
+stds <- c(0.5, 1, 1) 
+# Initialize an empty data frame 
+pts <- data.frame()
+# Loop through each group 
+for (i in seq_along(means)) {
+  group_pts <- matrix(rnorm(ssize * 2,
+    mean = means[i], sd = stds[i]), ncol = 2)
+  group_df <- as.data.frame(group_pts) %>% mutate(Ptype = i)
+  pts <- rbind(pts, group_df)
+}
+
+# Plotting with ggplot2, using Ptype as the color factor
+ggplot(pts, aes(x=V1, y=V2, color=factor(Ptype))) +
+  geom_point() +
+  labs(title = "Points from Multiple Groups", x = "X-axis", y = "Y-axis", color = "Point Type") +
+  theme_minimal()
+
+ 
+```
+
+## STEP 2: run kmeans clustering
+
+```{r, echo = c(1:26)}
+#| out-width: "100%"
+#| output-location: slide
+#| code-line-numbers: "1|6-7"
+# #| code-fold: true
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+K=3
+plots <- list() # Initialize an empty list to store the plots
+for (i in 1:4) {
+  # Perform k-means clustering
+  km.out <- kmeans(pts, centers = K, nstart = i) 
+  
+  # Prepare the data frame from the original points
+  pts_df <- as.data.frame(pts) %>% mutate(cluster = as.factor(km.out$cluster))
+  
+  # Prepare the data frame for the cluster centers
+  centers_df <- as.data.frame(km.out$centers) %>% mutate(cluster = 1:K)
+  
+  # Generate the plot
+  p <- ggplot() + 
+    geom_point(data = pts_df, aes(x = V1, y = V2, color = cluster)) +  # Plot points colored by cluster
+    geom_point(data = centers_df, aes(x = V1, y = V2), color = "black", size = 3, shape = 17) +  # Plot centers
+    labs(title = paste("Iteration", i, "rounds; tot.withinss=",  round(km.out$tot.withinss,2)  )) +  # Add iteration title
+    theme_minimal()  # Use minimal theme for cleaner look
+  
+  # Optionally add text to denote withinss for each cluster. Adjust coordinates as needed.
+  for (j in 1:4) {
+    p <- p + annotate("text", x = centers_df[j, 1], y = centers_df[j, 2], label =  round(km.out$withinss[j], 2), hjust = 1.5, vjust = -0.5)
+  }
+  
+  plots[[i]] <- p # Store the plot in the list
+}
+grid.arrange(grobs = plots, ncol = 2) # Arrange the plots in a 2 by 2 grid
+
+
+
+```
+
+## References
